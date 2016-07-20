@@ -21,3 +21,8 @@ post('/recipes') do
     erb(:index)
   end
 end
+
+get('/recipes') do
+  @recipes = Recipe.all()
+  erb(:recipes)
+end

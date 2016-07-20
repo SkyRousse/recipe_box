@@ -1,0 +1,12 @@
+<h1>Recipe Box</h1>
+<hr>
+<% if @recipes.any?() %>
+<ul>
+  <% @recipes.each() do |recipe| %>
+    <li><%= recipe.name() %></li>
+  <% end %>
+</ul>
+<% else %>
+    <p>There are no recipes yet!</p>
+    <a href="/">Go here to add a recipe</a>
+<% end %>
