@@ -1,6 +1,17 @@
 <h1>Recipe</h1>
+<h2>
+  This is your recipe: <%= @recipe.name() %>
+</h2>
 
+<h3> Here are the ingredients in your recipe </h3>
+<ul>
+<% @ingredients.each() do |ingredient| %>
+  <li><%= ingredient.name() %></li>
+<% end %>
+</ul>
 
-  <p>
-    This is your recipe: <%= @recipe.name() %>
-  </p>
+<form action="/ingredients" method="post">
+  <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
+  <input type="text" name="ingredient">
+  <button type="submit">Add Ingredient</button>
+</form>
