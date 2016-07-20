@@ -5,5 +5,9 @@ describe(Recipe) do
     recipe = Recipe.new({:name => ""})
     expect(recipe.save()).to(eq(false))
   end
+  it("ensures the length of a recipe is at most 40 characters") do
+    recipe = Recipe.new({:name => "a".*(41)})
+    expect(recipe.save()).to(eq(false))
+  end
 
 end
