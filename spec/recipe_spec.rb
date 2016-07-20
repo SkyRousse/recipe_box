@@ -10,4 +10,9 @@ describe(Recipe) do
     expect(recipe.save()).to(eq(false))
   end
 
+  it("converts the name to UPPERCASE") do
+    recipe = Recipe.create({:name => "Ballsagna"})
+    expect(recipe.name()).to(eq("BALLSAGNA"))
+  end
+
 end

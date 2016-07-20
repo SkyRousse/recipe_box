@@ -9,4 +9,8 @@ describe(Ingredient) do
     ingredient = Ingredient.new({:ingredient => "a".*(41)})
     expect(ingredient.save()).to(eq(false))
   end
+  it('capitalizes the ingredient name') do
+    test_ingredient = Ingredient.create({:ingredient => "meatball"})
+    expect(test_ingredient.ingredient()).to(eq("Meatball"))
+  end
 end
