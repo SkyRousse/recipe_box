@@ -1,4 +1,7 @@
-require('spec_helper')
+require('capybara/rspec')
+require('./app')
+Capybara.app = Sinatra::Application
+set(:show_exceptions, false)
 
 describe(Ingredient) do
   it('validate the presence of a ingredient') do
