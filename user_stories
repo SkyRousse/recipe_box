@@ -17,11 +17,11 @@ As a user, I want to see all recipes that use a certain ingredient, so I can mor
 # # To add a new ingredient to the list of existing ingredients:
 # recipe.ingredients.push(new_ingredient)
 #
-# # To create a new recipe and associate them with a ingredient at the same time:
-# Recipe.new({:ingredient_ids => [ingredient1.id()]})
+# # To create a new ingredient and associate them with a recipe at the same time:
+# Ingredient.new({:recipe_ids => [recipe1.id()]})
 #
-# # to create a recipe through the ingredient:
-# ingredient1.recipes.new()
+# # to create an ingredient through the recipe:
+# test_recipe.ingredients.new()
 #
 # Read
 #

@@ -7,20 +7,9 @@ get('/') do
   erb(:index)
 end
 
-get('/recipes/:id') do
-  @recipe = Recipe.find(params.fetch('id').to_i())
-  @ingredient
-  @ingredients = Ingredient.all()
-  erb(:recipe)
-end
-
-post('/ingredients') do
-  recipe_id = params.fetch('recipe_id')
-  @recipe = Recipe.find(recipe_id)
-  ingredient = params.fetch('ingredient')
-  @ingredients = Ingredient.all()
-  @ingredient = @recipe.ingredients.new(:id => nil, :ingredient => ingredient)
-  erb(:recipe)
+get('/recipes') do
+  @recipes = Recipe.all()
+  erb(:recipes)
 end
 
 post('/recipes') do
@@ -33,7 +22,18 @@ post('/recipes') do
   end
 end
 
-get('/recipes') do
-  @recipes = Recipe.all()
-  erb(:recipes)
+get('/recipes/:id') do
+  @recipe = Recipe.find(params.fetch('id').to_i())
+  @ingredients = @recipe.ingredients()
+  erb(:recipe)
+end
+
+post('/ingredients') do
+  recipe_id = params.fetch('recipe_id')
+  @recipe = Recipe.find(recipe_id)
+  ingredient = params.fetch('ingredient')
+  @ingredient = @recipe.ingredients.new({:ingredient => ingredient})
+  @recipe.ingredients.push(@ingredient)
+  redirect('/recipes/'.concat(@recipe.id().to_s()))
+
 end
