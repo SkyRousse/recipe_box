@@ -4,7 +4,7 @@
   <input type='hidden' name="_method" value="patch">
   <label for="recipe_name"> Name your recipe </label>
   <input text="text" name="recipe_name">
-  <button type="submit">Name</button>
+  <button class="btn btn-info" type="submit">Name</button>
 </form>
 
 <hr>
@@ -13,13 +13,12 @@
 <h3> Here are the ingredients in your recipe </h3>
 <ul class="ingredient-list">
 <% @ingredients.each() do |ingredient| %>
-  <li><%= ingredient.ingredient() %>
-    <form action="/ingredients/<%= ingredient.id()%>" method="post">
-      <input type="hidden" name="_method" value="delete">
-      <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
-        <button class="ingredient-btn btn btn-warning"type="submit">X</button>
-    </form>
-  </li>
+  <form action="/ingredients/<%= ingredient.id()%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
+      <button class="ingredient-btn btn btn-danger"type="submit">X</button>
+  </form>
+  <li><%= ingredient.ingredient() %></li>
   <% end %>
 </ul>
 <% else %>
@@ -32,7 +31,7 @@
 <form action="/ingredients" method="post">
   <input type="hidden" name="recipe_id" value="<%= @recipe.id() %>">
   <input type="text" name="ingredient">
-  <button type="submit">Add Ingredient</button>
+  <button class="btn btn-success" type="submit">Add Ingredient</button>
 </form>
 
 <hr>

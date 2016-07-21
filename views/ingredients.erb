@@ -1,0 +1,11 @@
+<hr>
+<% if @ingredients.any?() %>
+<ul>
+  <% @ingredients.each do |ingredient| %>
+  <li><a href="/ingredient/<%= ingredient.id() %>"><%= ingredient.ingredient() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no recipes with ingredients yet!</p>
+<a href="/">Go here to create a recipe</a>
+<% end %>

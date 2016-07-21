@@ -1,6 +1,17 @@
+
+
 ul.ingredient-list li {
+  list-style-type: none;
+  font-size: 22px;
+  margin-right: 22px;
+  list-style-position: outside;
+  float: left;
 }
 
 .ingredient-btn {
   display: inline-block;
+  margin-right: 10px;
+  float: left;
+  font-size: 12px;
+  padding: 6px;
 }
