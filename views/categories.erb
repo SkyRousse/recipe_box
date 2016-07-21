@@ -1,0 +1,11 @@
+<hr>
+<% if @tags.any?() %>
+<ul>
+  <% @tags.each do |tag| %>
+  <li><a href="/categories/<%= tag.id() %>"><%= tag.category() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no recipes with tags yet!</p>
+<a href="/">Go here to create a recipe</a>
+<% end %>

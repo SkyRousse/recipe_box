@@ -17,6 +17,11 @@ get('/ingredients') do
   erb(:ingredients)
 end
 
+get('/tags') do
+  @tags = Tag.all()
+  erb(:categories)
+end
+
 post('/recipes') do
   name = params.fetch('name')
   @recipe = Recipe.new(:id => nil, :name => name)
