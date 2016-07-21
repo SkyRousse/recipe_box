@@ -9,7 +9,6 @@ end
 
 get('/recipes') do
   @recipes = Recipe.all()
-  @ingredients = @recipe.ingredients()
   erb(:recipes)
 end
 
@@ -34,10 +33,10 @@ post('/ingredients') do
   @recipe = Recipe.find(recipe_id)
   ingredient = params.fetch('ingredient')
   @ingredient = @recipe.ingredients.new({:ingredient => ingredient})
+  @recipe.ingredients.push(@ingredient)
   if @ingredient.save()
     redirect('/recipes/'.concat(@recipe.id().to_s()))
   else
     erb(:index)
   end
-  erb(:recipe)
 end
