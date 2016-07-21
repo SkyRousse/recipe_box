@@ -33,6 +33,12 @@ get('/recipes/:id') do
   erb(:recipe)
 end
 
+get('/ingredients/:id') do
+  @ingredient = Ingredient.find(params.fetch('id').to_i())
+  @recipes = Recipe.all()
+  erb(:ingredient)
+end
+
 post('/ingredients') do
   recipe_id = params.fetch('recipe_id')
   @recipe = Recipe.find(recipe_id)

@@ -32,3 +32,25 @@ describe('add an ingredient route', {:type => :feature}) do
     expect(page).to have_content("Fixnums")
   end
 end
+
+describe('go to ingredient route', {:type => :feature}) do
+  it('allows a user to view a specific ingredient') do
+    visit('/')
+    test_ingredient = Ingredient.create({:ingredient => "concat"})
+    click_link("Filter Recipes by Ingredient")
+    click_link('Concat')
+    expect(page).to have_content('Concat')
+  end
+end
+
+describe('find recipes by ingredient route', {:type => :feature}) do
+  it('allows user to filter for recipes by a specific ingredient') do
+  visit('/')
+  test_recipe = Recipe.create({:name => "ram"})
+  new_ingredient = Ingredient.new({:ingredient => "psql", :recipe_ids => [test_recipe.id()]})
+  new_ingredient.save()
+  click_link("Filter Recipes by Ingredient")
+  click_link('Psql')
+  expect(page).to have_content('RAM')
+  end
+end
