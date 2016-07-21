@@ -24,6 +24,12 @@
 </form>
 
 <hr>
+
+<form action="/recipes/<%= @recipe.id() %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button class='btn btn-danger' type="submit">Delete Recipe</button>
+</form>
+<hr>
 <a href="/">Home (Add a New Recipe)</a>
 <br>
 <a href="/recipes">See All Recipes</a>

@@ -48,3 +48,10 @@ patch('/recipes/:id') do
     erb(:recipes)
   end
 end
+
+delete('/recipes/:id') do
+  recipe_id = params.fetch('id')
+  @recipe = Recipe.find(recipe_id)
+  @recipe.destroy()
+  erb(:index)
+end
