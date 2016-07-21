@@ -39,7 +39,7 @@ post('/ingredients') do
 end
 
 patch('/recipes/:id') do
-  recipe_id = params.fetch('id')
+  recipe_id = params.fetch('id').to_i()
   @recipe = Recipe.find(recipe_id)
   name = params.fetch('recipe_name')
   if @recipe.update(:name => name)
@@ -50,8 +50,18 @@ patch('/recipes/:id') do
 end
 
 delete('/recipes/:id') do
-  recipe_id = params.fetch('id')
+  recipe_id = params.fetch('id').to_i()
   @recipe = Recipe.find(recipe_id)
   @recipe.destroy()
+  redirect('/')
   erb(:index)
+end
+
+delete('/ingredients/:id') do
+  recipe_id = params.fetch('recipe_id')
+  @recipe = Recipe.find(recipe_id)
+  ingredient_id = params.fetch('id').to_i
+  @ingredient = Ingredient.find(ingredient_id)
+  @recipe.ingredients.destroy(@ingredient)
+  redirect('/recipes/'.concat(@recipe.id().to_s()))
 end
