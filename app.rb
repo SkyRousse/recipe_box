@@ -32,18 +32,6 @@ post('/recipes') do
   end
 end
 
-get('/recipes/:id') do
-  @recipe = Recipe.find(params.fetch('id').to_i())
-  @ingredients = @recipe.ingredients()
-  erb(:recipe)
-end
-
-get('/ingredients/:id') do
-  @ingredient = Ingredient.find(params.fetch('id').to_i())
-  @recipes = Recipe.all()
-  erb(:ingredient)
-end
-
 post('/ingredients') do
   recipe_id = params.fetch('recipe_id')
   @recipe = Recipe.find(recipe_id)
@@ -53,6 +41,30 @@ post('/ingredients') do
   redirect('/recipes/'.concat(@recipe.id().to_s()))
   erb(:recipes)
 end
+
+post('/tags') do
+  recipe_id = params.fetch('recipe_id')
+  @recipe = Recipe.find(recipe_id)
+  category = params.fetch('category')
+  @tag = @recipe.tags.new({:category => category})
+  @recipe.tags.push(@tag)
+  redirect('/recipes/'.concat(@recipe.id().to_s()))
+  erb(:recipes)
+end
+
+get('/recipes/:id') do
+  @recipe = Recipe.find(params.fetch('id').to_i())
+  @ingredients = @recipe.ingredients()
+  @tags = @recipe.tags()
+  erb(:recipe)
+end
+
+get('/ingredients/:id') do
+  @ingredient = Ingredient.find(params.fetch('id').to_i())
+  @recipes = Recipe.all()
+  erb(:ingredient)
+end
+
 
 patch('/recipes/:id') do
   recipe_id = params.fetch('id').to_i()
