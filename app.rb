@@ -35,5 +35,16 @@ post('/ingredients') do
   @ingredient = @recipe.ingredients.new({:ingredient => ingredient})
   @recipe.ingredients.push(@ingredient)
   redirect('/recipes/'.concat(@recipe.id().to_s()))
+  erb(:recipes)
+end
 
+patch('/recipes/:id') do
+  recipe_id = params.fetch('id')
+  @recipe = Recipe.find(recipe_id)
+  name = params.fetch('recipe_name')
+  if @recipe.update(:name => name)
+    redirect('/recipes/'.concat(@recipe.id().to_s()))
+  else
+    erb(:recipes)
+  end
 end

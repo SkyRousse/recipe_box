@@ -3,9 +3,8 @@ require('spec_helper')
 describe('create a recipe route', {:type => :feature}) do
   it('creates a recipe and brings user to page where they can edit the recipe') do
     visit('/')
-    fill_in("name", :with => "Ballsagna")
     click_button('Add Recipe')
-    expect(page).to have_content('BALLSAGNA')
+    expect(page).to have_content('NEW RECIPE')
   end
 end
 
@@ -18,14 +17,13 @@ describe('views a recipes route', {:type => :feature}) do
   end
 end
 
-describe('add ingredient route', {:type => :feature}) do
-  it('allows user to add an ingredient to a specific recipe') do
+describe('updates the NEW RECIPE default recipe with a value the user inputs', {:type => :feature}) do
+  it('allows the user to update a recipe name') do
     visit('/')
-    test_recipe = Recipe.create({:name => "Stabby Lambda"})
-    click_link('See All Recipes')
-    click_link('STABBY LAMBDA')
-    fill_in("ingredient", :with => "rocky mountain oyster")
-    click_button('Add Ingredient')
-    expect(page).to have_content("Rocky mountain oyster")
+    click_button('Add Recipe')
+    expect(page).to have_content('NEW RECIPE')
+    fill_in("recipe_name", :with => "yew-ahr-eye crud")
+    click_button("Name")
+    expect(page).to have_content("YEW-AHR-EYE CRUD")
   end
 end
