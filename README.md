@@ -1,26 +1,23 @@
-# _{Application Name}_
+# _Recipe Box_
 
-#### _{Brief description of application}, {Date of current version}_
+#### _An app that allows users to keep track of recipes_
 
 #### By _**Noah Yasskin and Sky Rousse**_
 
 ## Description
 
 _{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
-## Setup/Installation Requirements
 
-* _This is a simple Web application that should run in modern browsers_
-A [link](http://example.com).
+## User Stories
 
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
-
-## Known Bugs
-
-_{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
-
-## Support and contact details
-
-_If you run into any issues or have questions, ideas or concerns - or simply want to make a contribution to the code - please contact me at noahyasskin@gmail.com.}_
+* As a user, I want to add a recipe with ingredients and instructions, so I remember how to prepare my favorite dishes.
+* As a user, I want to tag my recipes with different categories, so recipes are easier to find. A recipe can have many tags and a tag can have many recipes.
+* As a user, I want to be able to update and delete tags, so I can have flexibility with how I categorize recipes.
+* As a user, I want to edit my recipes, so I can make improvements or corrections to my recipes.
+* As a user, I want to be able to delete recipes I don't like or use, so I don't have to see them as choices.
+* As a user, I want to rate my recipes, so I know which ones are the best.
+* As a user, I want to list my recipes by highest rated so I can see which ones I like the best.
+* As a user, I want to see all recipes that use a certain ingredient, so I can more easily find recipes for the ingredients I have.
 
 ## Technologies Used
 
